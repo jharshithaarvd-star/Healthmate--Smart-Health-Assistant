@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Healthcare Assistant</title>
+
+    <!-- Connect CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <h2>💙 HealthCare+</h2>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#checker">Symptom Checker</a>
+            <a href="#tips">Health Tips</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <h1>Your Health, Our Priority</h1>
+
+        <p>
+            Your personal healthcare information assistant.
+            Explore basic health information and wellness tips.
+        </p>
+
+        <a href="#services" class="btn">Explore Services</a>
+    </section>
+
+    <section class="services" id="services">
+        <h2>Our Healthcare Services</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>🩺 Symptom Checker</h3>
+                <p>Explore general information about common symptoms.</p>
+                <a href="#checker">Check Symptoms</a>
+            </div>
+
+            <div class="card">
+                <h3>🥗 Healthy Lifestyle</h3>
+                <p>Discover simple tips for a healthier lifestyle.</p>
+                <a href="#tips">View Tips</a>
+            </div>
+
+            <div class="card">
+                <h3>🚨 Emergency Guidance</h3>
+                <p>Learn when to seek urgent medical attention.</p>
+                <a href="#emergency">Learn More</a>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="checker" id="checker">
+        <h2>Basic Symptom Checker</h2>
+
+        <p>Select a symptom to view general health information.</p>
+
+        <label for="symptom">Choose a symptom:</label>
+
+        <select id="symptom">
+            <option value="">-- Select a symptom --</option>
+            <option value="headache">Headache</option>
+            <option value="cough">Cough</option>
+            <option value="fever">Fever</option>
+            <option value="stomach">Stomach pain</option>
+            <option value="fatigue">Tiredness</option>
+        </select>
+
+        <!-- Generate Guidance Button -->
+        <button type="button" id="checkButton">
+            Generate Guidance
+        </button>
+
+        <!-- JavaScript displays the result here -->
+        <div id="result" aria-live="polite"></div>
+
+        <p class="disclaimer">
+            This tool provides educational information, not a diagnosis.
+        </p>
+    </section>
+
+    <section class="tips" id="tips">
+        <h2>Daily Health Tips 🌿</h2>
+
+        <div class="cards">
+            <div class="card">💧 Drink water regularly.</div>
+            <div class="card">🥦 Eat balanced, nutritious meals.</div>
+            <div class="card">😴 Maintain a regular sleep schedule.</div>
+        </div>
+    </section>
+
+    <section class="emergency" id="emergency">
+        <h2>Emergency Guidance</h2>
+
+        <p>
+            Severe breathing difficulty, chest pain, or sudden confusion
+            may require immediate medical attention.
+        </p>
+
+        <p>
+            In India, call 112 for emergency assistance.
+        </p>
+    </section>
+
+    <footer>
+        <p>
+            © 2026 HealthCare+ | Educational information only.
+        </p>
+    </footer>
+
+    <!-- Connect JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>
