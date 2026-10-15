@@ -1,125 +1,241 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Smart Healthcare Assistant</title>
-
-    <!-- Connect CSS -->
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#087f8c">
+  <title>Health Mate | Smart Health Assistant</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
-
 <body>
+  <header class="topbar">
+    <a class="brand" href="#home"><span>✚</span> Health Mate</a>
+    <span class="tagline">Your wellness, your priority</span>
+  </header>
 
-    <header class="navbar">
-        <h2>💙 HealthCare+</h2>
-
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#services">Services</a>
-            <a href="#checker">Symptom Checker</a>
-            <a href="#tips">Health Tips</a>
-        </nav>
-    </header>
-
-    <section class="hero" id="home">
-        <h1>Your Health, Our Priority</h1>
-
-        <p>
-            Your personal healthcare information assistant.
-            Explore basic health information and wellness tips.
-        </p>
-
-        <a href="#services" class="btn">Explore Services</a>
+  <main class="container" id="home">
+    <section class="hero">
+      <div class="hero-content">
+        <span class="eyebrow">SMART HEALTH ASSISTANT</span>
+        <h1>Your health journey starts here.</h1>
+        <p>Explore symptoms, track your daily wellbeing, and stay on top of reminders.</p>
+        <a class="hero-link" href="#symptoms">Explore health tools ↓</a>
+      </div>
     </section>
 
-    <section class="services" id="services">
-        <h2>Our Healthcare Services</h2>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#symptoms">🩺 Symptoms</a>
+      <a href="#tracker">📊 Health tracker</a>
+      <a href="#reminders">🔔 Reminders</a>
+    </nav>
 
-        <div class="cards">
-
-            <div class="card">
-                <h3>🩺 Symptom Checker</h3>
-                <p>Explore general information about common symptoms.</p>
-                <a href="#checker">Check Symptoms</a>
-            </div>
-
-            <div class="card">
-                <h3>🥗 Healthy Lifestyle</h3>
-                <p>Discover simple tips for a healthier lifestyle.</p>
-                <a href="#tips">View Tips</a>
-            </div>
-
-            <div class="card">
-                <h3>🚨 Emergency Guidance</h3>
-                <p>Learn when to seek urgent medical attention.</p>
-                <a href="#emergency">Learn More</a>
-            </div>
-
+    <section class="card" id="symptoms">
+      <div class="section-heading">
+        <span class="section-icon">🩺</span>
+        <div>
+          <h2>Symptom checker</h2>
+          <p class="muted">Explore possible causes and appropriate next steps.</p>
         </div>
+      </div>
+
+      <div class="notice warning">
+        This educational tool cannot diagnose diseases or prescribe
+        medicine. It may miss serious conditions. Seek professional care
+        when needed.
+      </div>
+
+      <form id="symptomForm">
+        <label for="symptomsInput">Describe your symptoms</label>
+        <textarea id="symptomsInput" rows="4" required maxlength="1000"
+          placeholder="Example: I have a cough, sore throat, and fever..."></textarea>
+
+        <div class="form-grid">
+          <div>
+            <label for="duration">How long have you had symptoms?</label>
+            <select id="duration">
+              <option value="today">Started today</option>
+              <option value="fewdays">1–3 days</option>
+              <option value="long">More than 3 days</option>
+            </select>
+          </div>
+          <div>
+            <label for="ageGroup">Age group</label>
+            <select id="ageGroup">
+              <option value="adult">18–64 years</option>
+              <option value="child">Under 18 years</option>
+              <option value="older">65 years or older</option>
+            </select>
+          </div>
+        </div>
+
+        <label class="check-row">
+          <input type="checkbox" id="redFlags">
+          I have a severe symptom such as difficulty breathing,
+          severe chest pain, fainting, or confusion.
+        </label>
+
+        <button class="primary-button" type="submit">Analyze symptoms</button>
+      </form>
+
+      <div id="symptomResult" class="result" aria-live="polite">
+        <h3>Your health guidance</h3>
+        <p>Enter your symptoms above to see general information.</p>
+      </div>
+
+      <div id="medicineInfo" class="result medicine-panel">
+        <h3>💊 Medicine information and safety</h3>
+        <p>
+          The right medicine depends on the cause of symptoms, age,
+          allergies, other medicines, pregnancy status, and medical history.
+          This website does not issue prescriptions or calculate doses.
+        </p>
+        <p>
+          Ask a qualified pharmacist or clinician about suitable options.
+          Do not start antibiotics or prescription medicines without
+          professional advice.
+        </p>
+      </div>
     </section>
 
-    <section class="checker" id="checker">
-        <h2>Basic Symptom Checker</h2>
+    <section class="card" id="tracker">
+      <div class="section-heading">
+        <span class="section-icon">📊</span>
+        <div>
+          <h2>Daily health tracker</h2>
+          <p class="muted">Keep a personal record of your wellbeing.</p>
+        </div>
+      </div>
 
-        <p>Select a symptom to view general health information.</p>
+      <form id="trackerForm">
+        <div class="form-grid">
+          <div>
+            <label for="trackDate">Record date</label>
+            <input id="trackDate" type="date" required>
+          </div>
+          <div>
+            <label for="temperature">Temperature (°C, optional)</label>
+            <input id="temperature" type="number" min="30" max="45"
+              step="0.1" placeholder="e.g. 36.8">
+          </div>
+          <div>
+            <label for="water">Water (glasses)</label>
+            <input id="water" type="number" min="0" max="100" value="0" required>
+          </div>
+          <div>
+            <label for="sleep">Sleep (hours)</label>
+            <input id="sleep" type="number" min="0" max="24"
+              step="0.5" value="8" required>
+          </div>
+        </div>
 
-        <label for="symptom">Choose a symptom:</label>
-
-        <select id="symptom">
-            <option value="">-- Select a symptom --</option>
-            <option value="headache">Headache</option>
-            <option value="cough">Cough</option>
-            <option value="fever">Fever</option>
-            <option value="stomach">Stomach pain</option>
-            <option value="fatigue">Tiredness</option>
+        <label for="mood">How are you feeling?</label>
+        <select id="mood">
+          <option value="Good">Good</option>
+          <option value="Okay">Okay</option>
+          <option value="Low">Low</option>
+          <option value="Unwell">Unwell</option>
         </select>
 
-        <!-- Generate Guidance Button -->
-        <button type="button" id="checkButton">
-            Generate Guidance
-        </button>
+        <label for="dailyNotes">Symptoms or daily notes</label>
+        <textarea id="dailyNotes" rows="3" maxlength="1000"
+          placeholder="Write any health observations..."></textarea>
 
-        <!-- JavaScript displays the result here -->
-        <div id="result" aria-live="polite"></div>
+        <button class="primary-button" type="submit">Save daily record</button>
+      </form>
 
-        <p class="disclaimer">
-            This tool provides educational information, not a diagnosis.
-        </p>
+      <div class="stats">
+        <div class="stat-card"><span id="recordCount">0</span><small>Saved records</small></div>
+        <div class="stat-card"><span id="todayWater">0</span><small>Today's water glasses</small></div>
+        <div class="stat-card"><span id="todaySleep">—</span><small>Today's sleep hours</small></div>
+      </div>
+
+      <div class="subheading">
+        <h3>Health history</h3>
+        <button id="exportData" type="button" class="secondary-button">Export CSV</button>
+      </div>
+      <div id="history" class="history"></div>
+      <button id="clearData" type="button" class="danger-button">Delete all health records</button>
     </section>
 
-    <section class="tips" id="tips">
-        <h2>Daily Health Tips 🌿</h2>
-
-        <div class="cards">
-            <div class="card">💧 Drink water regularly.</div>
-            <div class="card">🥦 Eat balanced, nutritious meals.</div>
-            <div class="card">😴 Maintain a regular sleep schedule.</div>
+    <section class="card" id="reminders">
+      <div class="section-heading">
+        <span class="section-icon">🔔</span>
+        <div>
+          <h2>Medicine and health reminders</h2>
+          <p class="muted">Set reminders for your existing medication schedule or daily habits.</p>
         </div>
-    </section>
+      </div>
 
-    <section class="emergency" id="emergency">
-        <h2>Emergency Guidance</h2>
+      <div class="notice">
+        Enter the medicine schedule already advised by your healthcare
+        professional. This tool does not determine which medicine to take
+        or how much to take.
+      </div>
 
-        <p>
-            Severe breathing difficulty, chest pain, or sudden confusion
-            may require immediate medical attention.
+      <form id="reminderForm">
+        <label for="reminderName">Reminder name</label>
+        <input id="reminderName" maxlength="100" required
+          placeholder="e.g. My scheduled medicine">
+
+        <div class="form-grid">
+          <div>
+            <label for="reminderTime">Reminder time</label>
+            <input id="reminderTime" type="time" required>
+          </div>
+          <div>
+            <label for="reminderType">Reminder type</label>
+            <select id="reminderType">
+              <option value="Medicine">Medicine</option>
+              <option value="Water">Drink water</option>
+              <option value="Exercise">Movement break</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <label for="reminderDays">Repeat schedule</label>
+        <select id="reminderDays">
+          <option value="daily">Every day</option>
+          <option value="once">Today only</option>
+        </select>
+
+        <button class="primary-button" type="submit">Add reminder</button>
+      </form>
+
+      <div class="siren-panel">
+        <h3>🚒 Reminder sound</h3>
+        <p>Test an alternating fire-engine-style siren sound.</p>
+        <div class="button-row">
+          <button id="enableNotifications" type="button" class="primary-button">
+            Enable notifications
+          </button>
+          <button id="testSound" type="button" class="secondary-button">
+            Test siren
+          </button>
+          <button id="stopSound" type="button" class="secondary-button">
+            Stop sound
+          </button>
+        </div>
+        <label for="soundVolume">Siren volume</label>
+        <input id="soundVolume" type="range" min="1" max="30" value="8">
+        <p id="notificationStatus" aria-live="polite" class="muted">
+          Enable notifications and test your sound.
         </p>
+      </div>
 
-        <p>
-            In India, call 112 for emergency assistance.
-        </p>
+      <h3>Your reminders</h3>
+      <div id="reminderList" class="history"></div>
     </section>
 
     <footer>
-        <p>
-            © 2026 HealthCare+ | Educational information only.
-        </p>
+      <p>Health Mate is an educational prototype, not a substitute for
+        a clinician. In India, call 112 for emergency assistance when
+        needed. Do not delay urgent care while using this website.</p>
+      <p>Personal records are stored in this browser. Avoid entering
+        sensitive medical information on a shared device.</p>
     </footer>
-
-    <!-- Connect JavaScript -->
-    <script src="script.js"></script>
-
+  </main>
 </body>
 </html>
